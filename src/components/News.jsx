@@ -11,10 +11,8 @@ const News = () => {
 
   const fetchNews = async () => {
     try {
-      const apiKey = "427df0c7019141ddbdb659eeb29e2c04";
-      const response = await axios.get(
-        `https://newsapi.org/v2/everything?q=stock%20market%20india&language=en&sortBy=publishedAt&apiKey=${apiKey}`
-      );
+      const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || "http://localhost:5000";
+      const response = await axios.get(`${API_BASE_URL}/api/news`);
 
       const formattedNews = response.data.articles.map((item) => ({
         title: item.title,
