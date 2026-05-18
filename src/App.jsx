@@ -3,7 +3,7 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Layout from "./components/Layout";
 import Dashboard from "./pages/Dashboard";
 import WatchlistPage from "./pages/WatchlistPage";
-import News from "./components/news";
+import News from "./components/News";
 
 function App() {
   const [isDarkMode, setIsDarkMode] = useState(() => {
