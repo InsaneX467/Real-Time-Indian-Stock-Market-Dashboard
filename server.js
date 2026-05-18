@@ -333,27 +333,7 @@ app.get(
   }
 );
 
-//
-// ✅ FETCH NEWS (Proxy to avoid Vercel/Browser CORS blocks)
-//
-app.get("/api/news", async (req, res) => {
-  try {
-    // Render and local dev should have NEWS_API_KEY set
-    const apiKey = process.env.NEWS_API_KEY || process.env.VITE_NEWS_API_KEY; 
-    
-    if (!apiKey) {
-      return res.status(401).json({ error: "News API key is missing on the server." });
-    }
 
-    const response = await axios.get(
-      `https://newsapi.org/v2/everything?q=stock%20market%20india&language=en&sortBy=publishedAt&apiKey=${apiKey}`
-    );
-    res.json(response.data);
-  } catch (error) {
-    console.error("News fetch error:", error.message);
-    res.status(500).json({ error: "Failed to fetch news" });
-  }
-});
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
