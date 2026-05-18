@@ -330,8 +330,9 @@ app.get(
   }
 );
 
-app.listen(5000, () => {
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => {
   console.log(
-    "✅ Strong backend running on port 5000"
+    `✅ Strong backend running on port ${PORT}`
   );
 });

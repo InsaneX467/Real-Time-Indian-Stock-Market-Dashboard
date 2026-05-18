@@ -3,8 +3,9 @@ import axios from "axios";
 // Fetch dashboard stocks
 export const getAllStocks = async () => {
   try {
+    const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || "http://localhost:5000";
     const res = await axios.get(
-      "http://localhost:5000/api/stocks"
+      `${API_BASE_URL}/api/stocks`
     );
 
     return res.data;
@@ -21,8 +22,9 @@ export const getAllStocks = async () => {
 // Fetch market indices
 export const getMarketIndices = async () => {
   try {
+    const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || "http://localhost:5000";
     const res = await axios.get(
-      "http://localhost:5000/api/indices"
+      `${API_BASE_URL}/api/indices`
     );
 
     return res.data;
@@ -38,8 +40,9 @@ export const getMarketIndices = async () => {
 // Fetch best performance 10-year stocks
 export const getBestPerformance = async () => {
   try {
+    const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || "http://localhost:5000";
     const res = await axios.get(
-      "http://localhost:5000/api/best-performance"
+      `${API_BASE_URL}/api/best-performance`
     );
 
     return res.data;
@@ -96,8 +99,9 @@ export const getChartData = async (
   interval = "1d"
 ) => {
   try {
+    const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || "http://localhost:5000";
     const res = await axios.get(
-      `http://localhost:5000/api/chart/${symbol}?range=${range}&interval=${interval}`
+      `${API_BASE_URL}/api/chart/${symbol}?range=${range}&interval=${interval}`
     );
 
     return res.data;
