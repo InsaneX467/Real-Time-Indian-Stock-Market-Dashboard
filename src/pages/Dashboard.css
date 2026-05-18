@@ -1,0 +1,31 @@
+/* Cleaned up Dashboard.css. Using global variables from index.css instead */
+
+.dashboard-wrapper {
+  display: flex;
+  min-height: 100vh;
+  position: relative;
+}
+
+.container-fluid {
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+.chart-card {
+  min-height: 450px;
+}
+
+.chart-badge {
+  background: var(--accent-light);
+  color: var(--accent-primary);
+  padding: 6px 14px;
+  border-radius: 30px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+/* Ensure equal height columns if needed */
+.equal-height {
+  display: flex;
+  flex-direction: column;
+}

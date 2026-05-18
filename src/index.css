@@ -1,0 +1,518 @@
+@import 'bootstrap/dist/css/bootstrap.min.css';
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+/* ==========================================================================
+   Premium Fintech Dashboard - Scaled & Responsive
+   ========================================================================== */
+:root {
+  /* Dark Theme Default */
+  --bg-body: #121212;
+  --bg-sidebar: #1e1e1e;
+  --bg-card: #1e1e1e;
+  --bg-card-hover: #2d2d2d;
+  --bg-navbar: rgba(30, 30, 30, 0.85);
+  
+  --text-primary: #f5f5f5;
+  --text-secondary: #eaeaea;
+  --text-muted: #b8b8b8;
+  --text-inverse: #121212;
+  
+  --border-color: #2d2d2d;
+  --border-color-hover: #404040;
+  
+  --accent-primary: #00d09c;
+  --accent-hover: #00b386;
+  --accent-light: rgba(0, 208, 156, 0.15);
+  --accent-shadow: rgba(0, 208, 156, 0.3);
+  
+  --scrollbar-thumb: #2d2d2d;
+  --scrollbar-thumb-hover: #404040;
+  
+  --success-color: #00d09c;
+  --success-bg: rgba(0, 208, 156, 0.15);
+  --danger-color: #eb5b3c;
+  --danger-bg: rgba(235, 91, 60, 0.15);
+  
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.5);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.3);
+  --shadow-lg: 0 10px 24px rgba(0, 0, 0, 0.4);
+  --shadow-nav: 0 4px 20px rgba(0, 0, 0, 0.3);
+  --radius-card: 16px;
+}
+
+.light-theme {
+  --bg-body: #f4f5f7;
+  --bg-sidebar: #ffffff;
+  --bg-card: #ffffff;
+  --bg-card-hover: #f9f9f9;
+  --bg-navbar: rgba(255, 255, 255, 0.85);
+  
+  --text-primary: #44475b;
+  --text-secondary: #7c7e8c;
+  --text-muted: #a0a2b0;
+  --text-inverse: #ffffff;
+  
+  --border-color: #e8e9eb;
+  --border-color-hover: #d1d3d8;
+  
+  --accent-light: rgba(0, 208, 156, 0.1);
+  --scrollbar-thumb: #d1d3d8;
+  --scrollbar-thumb-hover: #a0a2b0;
+  
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.04);
+  --shadow-lg: 0 10px 24px rgba(0, 0, 0, 0.08);
+  --shadow-nav: 0 2px 10px rgba(0, 0, 0, 0.03);
+}
+
+/* ==========================================================================
+   Global Styles
+   ========================================================================== */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background-color: var(--bg-body);
+  color: var(--text-primary);
+  font-size: 14px; /* Scaled down base size */
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-thumb);
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--scrollbar-thumb-hover);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+  color: var(--text-primary);
+}
+
+/* ==========================================================================
+   Application Layout Structure
+   ========================================================================== */
+.app-container {
+  display: flex;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.sidebar {
+  width: 220px;
+  height: 100vh;
+  background-color: var(--bg-sidebar);
+  border-right: 1px solid var(--border-color);
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.content-wrapper {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.navbar-custom {
+  height: 64px;
+  min-height: 64px;
+  padding: 0 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--bg-navbar);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--border-color);
+  box-shadow: var(--shadow-nav);
+  z-index: 10;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.dashboard-main {
+  flex: 1;
+  overflow-y: auto;
+  padding: 24px;
+}
+
+/* ==========================================================================
+   Sidebar
+   ========================================================================== */
+.sidebar .logo {
+  font-size: 2rem;
+  font-weight: 800;
+  padding: 20px 24px;
+  color: var(--text-primary);
+  letter-spacing: -0.5px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 16px 0;
+  margin: 0;
+}
+
+.sidebar li {
+  padding: 10px 24px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--text-secondary);
+  cursor: pointer;
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.sidebar li:hover {
+  color: var(--text-primary);
+  background-color: var(--bg-card);
+}
+
+.sidebar li.active {
+  color: var(--accent-primary);
+  background-color: var(--accent-light);
+  border-right: 3px solid var(--accent-primary);
+}
+
+.sidebar li svg {
+  font-size: 1rem;
+}
+
+/* ==========================================================================
+   Navbar
+   ========================================================================== */
+.navbar-custom h3 {
+  font-size: 1.125rem;
+  font-weight: 600;
+}
+
+.navbar-custom p {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.search-box {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.search-box input {
+  padding: 8px 16px;
+  border: 1px solid var(--border-color);
+  border-radius: 20px;
+  outline: none;
+  font-size: 0.875rem;
+  width: 220px;
+  background-color: var(--bg-card);
+  color: var(--text-primary);
+  transition: all 0.3s ease;
+}
+
+.search-box input:focus {
+  width: 260px;
+  border-color: var(--accent-primary);
+  box-shadow: 0 0 0 2px var(--accent-light);
+}
+
+.search-box button {
+  padding: 8px 16px;
+  background-color: var(--accent-primary);
+  color: #fff;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 0.875rem;
+  font-weight: 500;
+  margin-left: 8px;
+  transition: background-color 0.3s ease;
+}
+
+.search-box button:hover {
+  background-color: var(--accent-hover);
+}
+
+.theme-toggle-btn {
+  background: transparent;
+  border: 1px solid var(--border-color);
+  color: var(--text-secondary);
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.theme-toggle-btn:hover {
+  color: var(--text-primary);
+  border-color: var(--border-color-hover);
+  background-color: var(--bg-card);
+}
+
+.market-status {
+  padding: 6px 12px;
+  background-color: var(--danger-bg);
+  color: var(--danger-color);
+  border-radius: 20px;
+  font-weight: 600;
+  font-size: 0.75rem;
+  border: 1px solid rgba(239, 68, 68, 0.2);
+}
+
+/* ==========================================================================
+   Dashboard Content & Cards
+   ========================================================================== */
+.glass-card {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-card);
+  padding: 24px;
+  box-shadow: var(--shadow-md);
+  margin-bottom: 24px;
+  transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.section-title {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 16px;
+  color: var(--text-primary);
+}
+
+/* Market Overview Grid */
+.overview-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+.stock-card {
+  padding: 16px;
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  background-color: var(--bg-body);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.stock-card:hover {
+  border-color: var(--accent-primary);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-sm);
+}
+
+.stock-card h4 {
+  font-size: 0.8125rem;
+  color: var(--text-secondary);
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.stock-card h5 {
+  font-size: 1.125rem;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.stock-card .trend {
+  font-size: 0.8125rem;
+  font-weight: 600;
+}
+
+.text-success { color: var(--success-color) !important; }
+.text-danger { color: var(--danger-color) !important; }
+
+/* ==========================================================================
+   Watchlist & Movers
+   ========================================================================== */
+.watchlist-item, .mover-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--border-color);
+  font-size: 0.875rem;
+  border-radius: 6px;
+  transition: background-color 0.3s ease;
+}
+
+.watchlist-item:last-child, .mover-card:last-child {
+  border-bottom: none;
+}
+
+.watchlist-item:hover, .mover-card:hover {
+  background-color: var(--bg-card-hover);
+  cursor: pointer;
+}
+
+.watchlist-symbol {
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.watchlist-price {
+  text-align: right;
+}
+
+.watchlist-price div:first-child {
+  font-weight: 500;
+}
+
+/* ==========================================================================
+   Chart
+   ========================================================================== */
+.chart-wrapper {
+  position: relative;
+  height: 340px;
+  width: 100%;
+}
+.chart-controls button { background: transparent; border: none; color: var(--text-muted); padding: 4px 8px; font-size: 0.75rem; font-weight: 600; cursor: pointer; transition: all 0.3s ease; }
+.chart-controls button.active, .chart-controls button:hover { color: var(--accent-primary); }
+
+/* ==========================================================================
+   Animations
+   ========================================================================== */
+@keyframes livePulse {
+  0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(0, 208, 156, 0.7); }
+  70% { transform: scale(1); box-shadow: 0 0 0 6px rgba(0, 208, 156, 0); }
+  100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(0, 208, 156, 0); }
+}
+
+.live-indicator {
+  animation: livePulse 2s infinite;
+}
+
+/* ==========================================================================
+   Responsive Design (Mobile & Tablet)
+   ========================================================================== */
+@media (max-width: 991px) {
+  .app-container {
+    flex-direction: column;
+  }
+  
+  .sidebar {
+    width: 100%;
+    height: 65px;
+    flex-direction: row;
+    position: fixed;
+    bottom: 0;
+    z-index: 1000;
+    border-right: none;
+    border-top: 1px solid var(--border-color);
+  }
+  
+  .sidebar .logo {
+    display: none;
+  }
+  
+  .sidebar ul {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    width: 100%;
+    padding: 0;
+  }
+  
+  .sidebar li {
+    padding: 8px 10px;
+    flex-direction: column;
+    gap: 4px;
+    font-size: 0.7rem;
+    justify-content: center;
+    border-right: none !important;
+    border-bottom: 3px solid transparent;
+  }
+  
+  .sidebar li.active {
+    border-bottom: 3px solid var(--accent-primary);
+    border-right: none;
+    background-color: transparent;
+  }
+  
+  .content-wrapper {
+    margin-bottom: 65px;
+  }
+  
+  .navbar-custom {
+    flex-direction: column;
+    height: auto;
+    padding: 16px;
+    gap: 16px;
+    align-items: flex-start;
+  }
+  
+  .nav-right {
+    width: 100%;
+    justify-content: space-between;
+  }
+  
+  .search-box {
+    flex: 1;
+  }
+  
+  .search-box input {
+    width: 100%;
+  }
+  
+  .search-box input:focus {
+    width: 100%;
+  }
+  
+  .dashboard-main {
+    padding: 16px;
+  }
+}
+
+@media (max-width: 576px) {
+  .overview-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .nav-right {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+  }
+  
+  .search-box {
+    width: 100%;
+    display: flex;
+  }
+  
+  .search-box input {
+    flex: 1;
+  }
+  
+  .theme-toggle-btn {
+    width: 100%;
+  }
+}
+
+
