@@ -6,30 +6,30 @@ const News = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    const fetchNews = async () => {
+      try {
+        const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || "http://localhost:5000";
+        const response = await axios.get(`${API_BASE_URL}/api/news`);
+
+        const formattedNews = response.data.articles.map((item) => ({
+          title: item.title,
+          category: item.source.name,
+          time: new Date(item.publishedAt).toLocaleDateString(),
+          description: item.description,
+          image: item.urlToImage,
+          url: item.url,
+        }));
+
+        setNewsList(formattedNews);
+      } catch (error) {
+        console.log(error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
     fetchNews();
   }, []);
-
-  const fetchNews = async () => {
-    try {
-      const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || "http://localhost:5000";
-      const response = await axios.get(`${API_BASE_URL}/api/news`);
-
-      const formattedNews = response.data.articles.map((item) => ({
-        title: item.title,
-        category: item.source.name,
-        time: new Date(item.publishedAt).toLocaleDateString(),
-        description: item.description,
-        image: item.urlToImage,
-        url: item.url,
-      }));
-
-      setNewsList(formattedNews);
-    } catch (error) {
-      console.log(error);
-    } finally {
-      setLoading(false);
-    }
-  };
 
   if (loading) {
     return <div className="p-4 text-center">Loading latest market news...</div>;
