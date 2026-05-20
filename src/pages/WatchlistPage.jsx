@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { getAllStocks, getBestPerformance } from "../services/stockApi";
 import { useNavigate, useOutletContext } from "react-router-dom";
 

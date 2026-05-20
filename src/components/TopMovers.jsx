@@ -48,7 +48,7 @@ const TopMovers = () => {
               const rawCloses = chartData.indicators?.quote?.[0]?.close || [];
               closes = rawCloses.filter((c) => c !== null);
             }
-          } catch (e) {
+          } catch{
             // ignore
           }
           return {

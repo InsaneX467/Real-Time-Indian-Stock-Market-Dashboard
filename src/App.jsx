@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Layout from "./components/Layout";
 import Dashboard from "./pages/Dashboard";
 import WatchlistPage from "./pages/WatchlistPage";
-import News from "./components/News";
+import News from "./pages/News";
 
 function App() {
   const [isDarkMode, setIsDarkMode] = useState(() => {
