@@ -1,18 +1,61 @@
-# React + Vite
+# 📈 Real-Time Indian Stock Market Dashboard
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A full-stack web application for monitoring Indian stock
+market data with interactive charts, watchlists and
+market insights.
 
-Currently, two official plugins are available:
+## 🚀 Live Demo
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+[Open Live Dashboard](YOUR_URL)
 
-## React Compiler
+## ✨ Features
 
-The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
+- 📊 Market overview
+- 📈 Interactive stock charts
+- 🔎 Stock search
+- ⭐ Watchlist
+- 📉 Top movers
+- 🔄 Market data updates
+- 📱 Responsive interface
 
-Note: This will impact Vite dev & build performances.
+## 🛠️ Tech Stack
 
-## Expanding the ESLint configuration
+Frontend:
+- React
+- Vite
+- Chart.js
+- Axios
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Backend:
+- Node.js
+- Express
+
+Data:
+- Yahoo Finance API
+
+Deployment:
+- Vercel
+
+## 🏗️ Architecture
+
+React Frontend
+       ↓
+Express Backend
+       ↓
+Market Data API
+       ↓
+Stock Data
+
+## 📸 Screenshots
+
+[images here]
+
+## ⚙️ Installation
+
+...
+
+## 🔮 Future Improvements
+
+- ...
+- ...
+- ...
